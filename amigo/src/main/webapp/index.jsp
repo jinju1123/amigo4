@@ -7,5 +7,6 @@
 </head>
 <body>
 	<h1>안녕! 바보들아!dddddddddddddddd</h1>
+	<h1>하이</h1>
 </body>
 </html>
