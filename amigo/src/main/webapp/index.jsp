@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>�ȳ�! �ٺ����!dddddddddddddddd ABCDEFGHIJKLMNOPQRSTUVWXYZ</h1>
+	<h1>¾È³ç! ¹Ùº¸µé¾Æ!dddddddddddddddd ABCDEFGHIJKLMNOPQRSTUVWXYZ하이</h1>
 </body>
 </html>
