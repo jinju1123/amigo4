@@ -7,10 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>안녕하십니까</h1>
-
-	<h1>
-	안녕하세요!!!!
-	</h1>
+	my01_메뉴바
+	
 </body>
 </html>
