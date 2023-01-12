@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
 	<wb-module deploy-name="amigo">
@@ -8,4 +9,63 @@
 		<property name="java-output-path" value="target/classes"/>
         <property name="context-root" value="amigo"/>
 	</wb-module>
+=======
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+                        	
+    
+    
+    
+    
+    
+    <wb-module deploy-name="amigo">
+                                                        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+                                                		
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                                                		
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                                                		
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                                                		
+        
+        
+        
+        
+        
+        <property name="java-output-path" value="target/classes"/>
+        <property name="context-root" value="amigo"/>
+                                                	
+    
+    
+    
+    
+    
+    </wb-module>
+                        
+
+
+
+
+
+>>>>>>> e41149a189f4054d67994344c691b538cf6aacf3
 </project-modules>

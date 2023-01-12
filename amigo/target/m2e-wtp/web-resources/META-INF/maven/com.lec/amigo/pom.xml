@@ -14,18 +14,15 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-	<dependency>
-		    <groupId>org.json</groupId>
-		    <artifactId>json</artifactId>
-		    <version>20180813</version>
-		</dependency>
+		
+		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
 	    	<groupId>org.springframework</groupId>
 	    	<artifactId>spring-jdbc</artifactId>
 	    	<version>4.3.4.RELEASE</version>
 		</dependency>
-			<!-- FileUpload -->
+		<!-- FileUpload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -52,6 +49,11 @@
   			<artifactId>json-simple</artifactId>
   			<version>1.1.1</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20180813</version>
+		</dependency>
 		
 		<!-- 웹소켓 -->	
 		<dependency>
@@ -59,15 +61,12 @@
 			<artifactId>spring-websocket</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.websocket</groupId>
 			<artifactId>javax.websocket-api</artifactId>
     		<version>1.1</version>
 		</dependency>
 		
-		
-	
 		<!-- 마리아JDBC-->
 		<dependency>
     		<groupId>org.mariadb.jdbc</groupId>

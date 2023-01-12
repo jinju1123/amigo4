@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD:amigo/src/main/webapp/index.jsp
 <<<<<<< HEAD
 	<h1>안녕! 바보들아!dddddddddddddddd ABCDEFGHIJKLMNOPQRSTUVWXYZ
 		제가 수정을 한번 해보겠습니다112345678
@@ -23,5 +24,9 @@
 	안녕하세요!!!!
 	</h1>
 >>>>>>> 9c8c4e976ed3096d894ba533848721f63d03cbfd
+=======
+	my01_메뉴바
+	
+>>>>>>> e41149a189f4054d67994344c691b538cf6aacf3:amigo/src/main/webapp/includes/header.jsp
 </body>
 </html>
