@@ -21,7 +21,7 @@
 	
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		로그인전01_처음화면
+		로그인전01_처음화면 dd
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 
