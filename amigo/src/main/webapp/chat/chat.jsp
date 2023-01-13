@@ -25,13 +25,6 @@
 	
 	ChatDAO dao = new ChatDAO();
 %>
-<%List<ChatVO> chatList = dao.getChatList(index); %>
-<c:set var="chatList" value="<%=chatList %>"></c:set>
-
-
-
-
-
 
 
 <meta charset="UTF-8">
@@ -58,8 +51,6 @@
 	
 
 
-	
-	
 	<div class="container">
 		<h1 class="page-header">Chat</h1>		
 	
@@ -78,6 +69,7 @@
 
 			<td colspan="2"><div id="list">
 					
+					<!-- 
 					<c:forEach var="chat" items="${chatList }">			
 					<div style="margin-bottom:3px;">
 					[${chat.getUser() }] ${chat.getContent()} 
@@ -86,7 +78,7 @@
 					</span>
 					</div>
 					</c:forEach>	
-					
+					 -->
 			</div></td>
 		</tr>
 		<tr>
@@ -96,14 +88,12 @@
 		</table>
 		
 	</div>
-	
-		
-	  <script>
+	<script>
 //채팅 서버 주소
-  let url = "ws://192.168.0.101:8088/amigo/chatserver";
+  var url = "ws://localhost:8088/amigo/chatHandler.do";
   let index = "<%=index%>";
   // 웹 소켓
-  let ws;
+  var ws;
 	
   // 연결하기
   $('#btnConnect').click(function() {
@@ -111,18 +101,17 @@
   	// 유저명 확인
      	if ($('#user').val().trim() != '') {
      		// 연결 	
+     	console.log(url);
   	   	ws = new WebSocket(url);
-     		
-     	
+   
   	   	// 소켓 이벤트 매핑
   	   	ws.onopen = function (evt) {
-  	   		// console.log('서버 연결 성공');
+  	   		console.log('서버 연결 성공');
   	   		print($('#user').val(), '입장했습니다.');
-  	   		
+  			
   	   		// 현재 사용자가 입장했다고 서버에게 통지(유저명 전달)
   	   		// -> 1#유저명
   			ws.send('1#' + $('#user').val() + '#' + index); //이게 서버에 msg로 가는모양인가보다
- 			
   			$('#user').attr('readonly', true);
   			$('#btnConnect').attr('disabled', true);
   			$('#btnDisconnect').attr('disabled', false);
