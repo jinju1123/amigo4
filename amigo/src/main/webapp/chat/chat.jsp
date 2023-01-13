@@ -11,7 +11,8 @@
 <head>
 
 <% 
-	int index=3;
+	int index=Integer.parseInt(request.getParameter("index"));
+	String name = request.getParameter("name");
 /*
 	if((int)request.getAttribute("idCheck")>0){
 		index = (int)request.getAttribute("idCheck");
@@ -21,9 +22,11 @@
 		System.out.println(index+"로그인실패!");
 	}
 */
-
 	
+		
 	ChatDAO dao = new ChatDAO();
+	
+	
 %>
 
 
@@ -69,8 +72,8 @@
 
 			<td colspan="2"><div id="list">
 					
-					<!-- 
-					<c:forEach var="chat" items="${chatList }">			
+					
+					<c:forEach var="chat" items="<%= dao.getChatList(index)%>">			
 					<div style="margin-bottom:3px;">
 					[${chat.getUser() }] ${chat.getContent()} 
 					<span style="font-size:11px;color:#777;">
@@ -78,7 +81,7 @@
 					</span>
 					</div>
 					</c:forEach>	
-					 -->
+					 
 			</div></td>
 		</tr>
 		<tr>
@@ -93,19 +96,18 @@
   var url = "ws://localhost:8088/amigo/chatHandler.do";
   let index = "<%=index%>";
   // 웹 소켓
-  var ws;
+  let ws;
 	
   // 연결하기
-  $('#btnConnect').click(function() {
+  $('#btnConnect').click(function connect() {
 	  
   	// 유저명 확인
      	if ($('#user').val().trim() != '') {
      		// 연결 	
-     	console.log(url);
   	   	ws = new WebSocket(url);
    
   	   	// 소켓 이벤트 매핑
-  	   	ws.onopen = function (evt) {
+  	   	ws.onopen = function () {
   	   		console.log('서버 연결 성공');
   	   		print($('#user').val(), '입장했습니다.');
   			
@@ -140,6 +142,9 @@
   	   			
   		ws.onclose = function (evt) {
   			console.log('소켓이 닫힙니다.');
+  			
+  			//setTimeout(function(){connect();}, 1000);
+  			
   		};
 
   		ws.onerror = function (evt) {
@@ -197,6 +202,9 @@
   	if (event.keyCode == 13) {	
   		//서버에게 메시지 전달
   		//2#유저명#메시지
+  		
+  		console.log($(this));
+  		
   		ws.send('2#' + $('#user').val() + '#' + $(this).val() + '#'+index); //서버에게
   		
   		print($('#user').val(), $(this).val()); //본인 대화창에

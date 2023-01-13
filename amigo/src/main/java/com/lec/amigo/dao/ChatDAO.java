@@ -14,8 +14,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.lec.amigo.chat.JDBCUtility.JDBCUtility;
+import com.lec.amigo.mapper.ChatRowMapper;
 import com.lec.amigo.vo.ChatVO;
 import com.lec.amigo.vo.UserVO;
+
 
 @Repository("chatdao")
 public class ChatDAO {
@@ -190,6 +192,71 @@ public class ChatDAO {
 		
 		 
 		return null;
+	}
+	
+	public List<ChatVO> getMyChatList(String name){
+			
+		String sql = "select distinct chat_index from chatmessage where chat_user=?";
+		//Object[] args = {sql, name};
+		
+		Connection conn = JDBCUtility.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<ChatVO> myChatList = new ArrayList<ChatVO>();
+		
+		int a = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,name);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				a = rs.getInt("chat_index");
+				System.out.println(a+"확인용");
+				myChatList.add(getLastChat(a));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCUtility.close(conn, rs, pstmt);
+		}
+		
+		return myChatList; 	
+	}
+	
+	public ChatVO getLastChat(int index) {
+		
+		ChatVO chat = new ChatVO();
+		String sql = "select * from chatmessage where chat_index=? order by chat_reg_date desc";
+		Connection conn = JDBCUtility.getConnection();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, index);
+			rs= pstmt.executeQuery();
+			
+			if(rs.next()) {
+				chat.setIndex(index);
+				chat.setContent(rs.getString("chat_content"));
+				chat.setUser(rs.getString("chat_user"));
+				chat.setDate(rs.getDate("chat_reg_date"));
+				chat.setRead_is(rs.getBoolean("read_is"));
+			}
+			System.out.println(chat.toString());
+		} catch (SQLException e) {
+			System.out.println(chat.toString());
+			e.printStackTrace();
+		}
+		
+	
+		return chat; 
 	}
 	
 	

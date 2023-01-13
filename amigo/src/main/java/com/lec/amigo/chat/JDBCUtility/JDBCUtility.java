@@ -10,8 +10,8 @@ public class JDBCUtility {
 	
 	private final static String driver = "org.mariadb.jdbc.Driver";
 	private final static String url = "jdbc:mariadb://localhost:3306/spring";
-	private final static String user = "scott";
-	private final static String pwd = "tiger";
+	private final static String user = "root";
+	private final static String pwd = "12345";
 	
 	public static Connection getConnection(){
 		Connection conn = null;	
