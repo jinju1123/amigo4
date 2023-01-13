@@ -3,6 +3,7 @@ package com.lec.amigo.chat;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.websocket.Session;
 
@@ -14,21 +15,52 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.lec.amigo.dao.ChatDAO;
+import com.lec.amigo.vo.UserVO;
 
 public class ChatHandler extends TextWebSocketHandler{
 	
-	private static List<WebSocketSession> list = new ArrayList();
-	private static final Logger logger = LoggerFactory.getLogger(ChatServer.class);
-	ChatDAO chatDao = new ChatDAO();
+	private static List<WebSocketSession> sessions = new ArrayList();
+	
+	//private static final Logger logger = LoggerFactory.getLogger(ChatServer.class);
+	//ChatDAO chatDao = new ChatDAO();
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		System.out.println("서버연결");
-		list.add(session);
+		sessions.add(session);
 	}
 	
 	@Override
-	protected void handleTextMessage(WebSocketSession session, TextMessage msg) throws Exception {
-	
+	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		System.out.println("메세지");		
+		String senderId = getId(session);
+		
+		
+		System.out.println(message);
+		
+		String msg = message.getPayload();
+		
+		String no;
+		String roomIndex;
+		String sendUser;
+		String text;
+			
+		String[] strs = msg.split("#");
+			if(strs!=null && strs.length==4) {
+				no = strs[0];
+				sendUser =strs[1];
+				text = strs[2];
+				roomIndex = strs[3];
+		}
+			
+		
+			
+			
+		
+		
+		
+		//protocol:댓글작성자, 게시글작성자, 
+		
+		
 		/*
 		//msg에서 인덱스 번호 빼옴
 		//인덱스번호에 맞는 리스트에 세션저장
@@ -87,6 +119,9 @@ public class ChatHandler extends TextWebSocketHandler{
 		
 		//이 각각의 아이디와 sessionList의 각각의 session의 아이디가 일치하면 문자 보내면 됨
 		
+		
+		
+			
 		
 		if (no.equals("1")) {
 			// 누군가 접속 > 1#아무개
@@ -154,13 +189,25 @@ public class ChatHandler extends TextWebSocketHandler{
 				}
 			
 			}
-			list.remove(session);
+			sessions.remove(session);
 			
 		}
 		*/
 		
+		
 	}
 	
+	private String getId(WebSocketSession session) {
+		Map<String, Object> httpSession = session.getAttributes();
+		
+		UserVO loginUser = (UserVO)httpSession.get("힝");
+		
+		if(loginUser!=null) {
+			return session.getId();
+		}else return loginUser.getName();
+		
+	}
+
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		
