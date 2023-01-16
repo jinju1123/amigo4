@@ -6,11 +6,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
-	<%
-	
+	<%	
 	ChatDAO dao = new ChatDAO();
-	List<ChatVO> chatList = dao.getMyChatList("한준호");
-			
+	List<ChatVO> chatList = dao.getMyChatList("한준호");	
 	%>
 <head>
 <script
@@ -27,18 +25,14 @@
     <![endif]-->
 </head>
 <body>
-	
 	<%@include file="/includes/header.jsp" %>
-		<div class="container">
-		
-		<table>
-			
+		<div class="container">		
+		<table>		
 			<c:forEach var="chat" items="<%=chatList %>">
 			<tr>
 				<td><a href="chat.jsp?index=${chat.getIndex()}&name=${chat.getUser()}">방번호:${chat.getIndex() }</a></td>
 				<td>마지막작성자:${chat.getUser()}</td>
-				<td>내용:${chat.getContent() }</td>
-				
+				<td>내용:${chat.getContent() }</td>				
 				<c:if test="${!chat.isRead_is() }"> <!--  -->
 					<td>안 읽었음!</td>
 				</c:if>

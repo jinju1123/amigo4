@@ -1,3 +1,4 @@
+<%@page import="com.lec.amigo.vo.ChatRoom"%>
 <%@page import="org.springframework.web.servlet.tags.Param"%>
 <%@page import="com.lec.amigo.vo.ChatVO"%>
 <%@page import="java.util.List"%>
@@ -13,6 +14,13 @@
 <% 
 	int index=Integer.parseInt(request.getParameter("index"));
 	String name = request.getParameter("name");
+	
+	ChatRoom chatroom = new ChatRoom();
+	chatroom.setChat_index(index);	
+	
+	
+	session.setAttribute("chatRoom", chatroom);
+	
 /*
 	if((int)request.getAttribute("idCheck")>0){
 		index = (int)request.getAttribute("idCheck");
@@ -96,7 +104,7 @@
   var url = "ws://localhost:8088/amigo/chatHandler.do";
   let index = "<%=index%>";
   // 웹 소켓
-  let ws;
+  var ws;
 	
   // 연결하기
   $('#btnConnect').click(function connect() {
@@ -109,7 +117,7 @@
   	   	// 소켓 이벤트 매핑
   	   	ws.onopen = function () {
   	   		console.log('서버 연결 성공');
-  	   		print($('#user').val(), '입장했습니다.');
+  	   		//print($('#user').val(), '입장했습니다.');
   			
   	   		// 현재 사용자가 입장했다고 서버에게 통지(유저명 전달)
   	   		// -> 1#유저명
@@ -141,6 +149,7 @@
   		};
   	   			
   		ws.onclose = function (evt) {
+  			console.log(evt.data);
   			console.log('소켓이 닫힙니다.');
   			
   			//setTimeout(function(){connect();}, 1000);

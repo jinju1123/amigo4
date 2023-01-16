@@ -12,6 +12,7 @@ import javax.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.socket.WebSocketSession;
 
 import com.lec.amigo.chat.JDBCUtility.JDBCUtility;
 import com.lec.amigo.mapper.ChatRowMapper;
@@ -21,6 +22,8 @@ import com.lec.amigo.vo.UserVO;
 
 @Repository("chatdao")
 public class ChatDAO {
+	
+	
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -91,8 +94,6 @@ public class ChatDAO {
 			JDBCUtility.close(conn, rs, pstmt);
 		}
 		
-
-	
 		return chatList;
 	}
 	
@@ -129,10 +130,16 @@ public class ChatDAO {
 		
 	}
 	
-	public void setRoom(Session session, int roomNo){	
-		String sql = "insert into chatRoom values(?,?)";
+	public void setRoom(WebSocketSession session, int roomNo){
+		
+		System.out.println("여긴 들어와지냐?");
+		String sql = "insert into chatroom values(?,?)";
 		Connection conn = JDBCUtility.getConnection();
 		PreparedStatement pstmt = null;
+		
+		
+		
+		
 		String sessionId = session.getId();
 		int row=0;
 		
@@ -161,26 +168,52 @@ public class ChatDAO {
 		
 	}
 	
-	public List<String> getSessionsId(int roomNo) {
+	public int getRoomIndex(String id) {
+		
+		String sql = "select chat_index from chatRoom where session_id=?";
+		Connection conn = JDBCUtility.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs =null;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int index = rs.getInt("chat_index");
+				System.out.println(index+"방번호입니다");
+				return index;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCUtility.close(conn, rs, pstmt);
+		}
+		
+		return 0; 
+	}
+	
+	public String getSessionId(int roomNo) {
 		
 		String sql = "select session_id from chatRoom where chat_index=?";
 		Connection conn = JDBCUtility.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
-		
-		List<String> idList = new ArrayList();
+	
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, roomNo);
 			rs=pstmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				String id = rs.getString(1);
-				idList.add(id);
+				System.out.println("id"+"아이디라ㅏ고"+id);
+				return id;
 		
 			}
-			return idList;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -253,6 +286,8 @@ public class ChatDAO {
 		} catch (SQLException e) {
 			System.out.println(chat.toString());
 			e.printStackTrace();
+		}finally {
+			JDBCUtility.close(conn, rs, pstmt);
 		}
 		
 	
