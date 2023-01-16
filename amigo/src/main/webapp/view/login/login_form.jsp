@@ -21,7 +21,7 @@
 	
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		로그인전02_로그인
+		로그인전02_로그인 깃허브 연습
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 
