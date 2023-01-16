@@ -18,13 +18,39 @@
     <![endif]-->
 </head>
 <body>
-	
-	<%@include file="/includes/header.jsp" %>
+<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		로그인전02_로그인 깃허브 연습
+		<form action="login.do" method="post">
+		
+        <input type="text" name="user_email" class="form-control" id="user_email" placeholder="아이디(이메일)">
+       	<br>
+       	<c:if test="${ !sessionScope.isLoginSuccess }">
+         	<h5>사용자를 찾지 못했습니다.</h5>
+        </c:if>
+        
+        <input type="password" name="user_pw" class="form-control" id="user_pw" placeholder="비밀번호"> 
+        <br>
+		
+		<a href="#">비밀번호를 잊으셨나요?</a>
+         <c:if test="${ sessionScope.matchedPassword != null && !sessionScope.matchedPassword}">
+         	<h5>비밀번호가 일치하지 않습니다.</h5>
+         </c:if>
+		<br>
+		<br>
+		
+        <button type="submit" class="btn btn-primary">로그인</button>
+        
+        <hr>
+        <br>
+        
+        <a href="#">다른 방식으로 로그인 할게요.</a>
+		
+		</form>
 		</div>
+		
+		
+		
+         
 	<%@include file="/includes/footer.jsp" %>
-
-	
 </body>
 </html>
