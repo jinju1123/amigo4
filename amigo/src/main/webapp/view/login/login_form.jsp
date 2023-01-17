@@ -18,13 +18,37 @@
     <![endif]-->
 </head>
 <body>
-	
-	<%@include file="/includes/header.jsp" %>
+<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		로그인전02_로그인
+		<form action="login.do" method="post">
+		
+        <input type="text" name="user_email" class="form-control" id="user_email" placeholder="아이디(이메일)">
+       	<br>
+        
+        <input type="password" name="user_pw" class="form-control" id="user_pw" placeholder="비밀번호"> 
+        <br>
+		
+       	<c:if test="${ !sessionScope.isLoginSuccess && sessionScope.isLoginSuccess != null && sessionScope.matchedPassword != null && !sessionScope.matchedPassword}">
+         	<h5>아이디와 비밀번호를 확인해주세요.</h5>
+        </c:if>
+         
+		<a href="search_pwd.do">비밀번호를 잊으셨나요?</a>
+		<br>
+		<br>
+		
+        <button type="submit" class="btn btn-primary">로그인</button>
+        
+        <hr>
+        <br>
+        
+        <a href="#">다른 방식으로 로그인 할게요.</a>
+		
+		</form>
 		</div>
+		
+		
+		
+         
 	<%@include file="/includes/footer.jsp" %>
-
-	
 </body>
 </html>

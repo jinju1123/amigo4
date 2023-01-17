@@ -20,7 +20,7 @@
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	
 	<!-- 웹소켓 -->
-	<context:component-scan base-package="com.lec.amigo.controller"/>
+	<context:component-scan base-package="com.lec.amigo"/>
 	
 	
 	<beans:bean id="chatHandler" class="com.lec.amigo.chat.ChatHandler"/>
