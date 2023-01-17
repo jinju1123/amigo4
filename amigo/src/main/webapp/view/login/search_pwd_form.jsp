@@ -21,7 +21,12 @@
 	
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		로그인전03_비밀번호
+		
+		<form action="search_pwd.do" method="post">
+		<input type="text" name="user_email" id="user_email" placeholder="이메일"><br><br>
+		<input type="submit" value="임시 비밀번호 발급"></a>
+		</form>
+		
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 

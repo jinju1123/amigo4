@@ -1,43 +1,86 @@
 package com.lec.amigo.vo;
 
-import java.beans.Transient;
-
-import org.springframework.web.multipart.MultipartFile;
-
 public class UserVO {
 
-	private String id;
-	private String password;
-	private String name;
-	private String role;
+	private int user_no;
+	private String user_type;
+	private String user_email;
+	private String user_pw;
+	private String user_name;
+	private String user_nick;
+	private String user_addr;
+	private String user_phone;
+	private String user_photo;
+	private boolean user_terms;
 	
-	public String getId() {
-		return id;
+	public int getUser_no() {
+		return user_no;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
 	}
-	public String getPassword() {
-		return password;
+	public String getUser_type() {
+		return user_type;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUser_type(String user_type) {
+		this.user_type = user_type;
 	}
-	public String getName() {
-		return name;
+	public String getUser_email() {
+		return user_email;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
 	}
-	public String getRole() {
-		return role;
+	public String getUser_pw() {
+		return user_pw;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setUser_pw(String user_pw) {
+		this.user_pw = user_pw;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+	public String getUser_nick() {
+		return user_nick;
+	}
+	public void setUser_nick(String user_nick) {
+		this.user_nick = user_nick;
+	}
+	public String getUser_addr() {
+		return user_addr;
+	}
+	public void setUser_addr(String user_addr) {
+		this.user_addr = user_addr;
+	}
+	public String getUser_phone() {
+		return user_phone;
+	}
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
+	}
+	public String getUser_photo() {
+		return user_photo;
+	}
+	public void setUser_photo(String user_photo) {
+		this.user_photo = user_photo;
+	}
+
+	public boolean isUser_terms() {
+		return user_terms;
+	}
+	public void setUser_terms(boolean user_terms) {
+		this.user_terms = user_terms;
 	}
 	@Override
 	public String toString() {
-		return "UserVO [id=" + id + ", password=" + password + ", name=" + name + ", role=" + role + "]";
+		return "UserVO [user_no=" + user_no + ", user_type=" + user_type + ", user_email=" + user_email + ", user_name="
+				+ user_name + ", user_nick=" + user_nick + "]";
 	}
+	
+	
+	
 	
 }

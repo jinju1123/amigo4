@@ -44,7 +44,7 @@
 					
 						<div class="input-group mb-3">
 							<div class="input-group-text"><i>이름</i></div>
-							<input type="text" name="dog_name" class="form-control" value="" required placeholder="예) 댕댕이">
+							<input type="text" name="dog_name" class="form-control" value="푸쿠" required placeholder="예) 댕댕이">
 						</div>
 						
 					
@@ -63,17 +63,17 @@
 						
 						<div class="input-group mb-3">
 							<div class="input-group-text"><i class="fas fa-address-book">품종</i></div>
-							<input type="text" name="dog_breeds" class="form-control" value="" required placeholder="예) 말티즈">
+							<input type="text" name="dog_breeds" class="form-control" value="시바" required placeholder="예) 말티즈">
 						</div>
 						
 						<div class="input-group mb-3">
 							<div class="input-group-text"><i class="fas fa-address-book">생일</i></div>
-							<input type="text" name="dog_birth" class="form-control" value="" required placeholder="예) 2023.01.17">
+							<input type="text" name="dog_birth" class="form-control" value="2023.01.17" required placeholder="예) 2023.01.17">
 						</div>
 						
 						<div class="input-group mb-3">
 							<div class="input-group-text"><i class="fas fa-address-book">몸무게(kg)</i></div>
-							<input type="text" name="dog_weight" class="form-control" value="" required placeholder="예) 5.25">
+							<input type="text" name="dog_weight" class="form-control" value="6.25" required placeholder="예) 5.25">
 						</div>
 						
 					 <div class="input-group mb-3">
@@ -110,8 +110,8 @@
 				<hr>
 					<div class="mb-3">
 					  <label for="notice" class="form-label">우리강아지(성격 및 건강상태 등..)</label>
-					  <textarea class="form-control" id="notice" rows="3" name="dog_notice"
-					   placeholder="펫시터에게 알려줘야할 사항들을 나열해주세요. 성격 및 건상상태를 알려주시면 됩니다."></textarea>
+					  <input class="form-control" id="notice" rows="3" name="dog_notice" value="성형이"
+					   placeholder="펫시터에게 알려줘야할 사항들을 나열해주세요. 성격 및 건상상태를 알려주시면 됩니다.">
 					</div>
 				<hr>
 				

@@ -2,12 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:websocket="http://www.springframework.org/schema/websocket"
-	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<context:component-scan base-package="com.lec.amigo"/>
+	
 	
 	<!-- 파일 업로드 설정 -->
 	<bean id="multipartResolver"
@@ -15,14 +14,6 @@
 		<property name="maxUploadSize" value="-1" />
 	</bean>
 	
-	<bean id="chatHandler" class="com.lec.amigo.chat.ChatHandler"/>
-	<websocket:handlers>
-		<websocket:mapping handler="chatHandler" path="/chatServer"/>
-   		<websocket:handshake-interceptors>
-   			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
-    	</websocket:handshake-interceptors>
-	</websocket:handlers>
-	
+
+
 </beans>
-
-
