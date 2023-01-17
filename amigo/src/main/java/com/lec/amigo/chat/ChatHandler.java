@@ -192,7 +192,25 @@ public class ChatHandler extends TextWebSocketHandler{
 		
 			
 		}
+<<<<<<< HEAD
 
+=======
+		*/
+		
+		
+	}
+	
+	private String getId(WebSocketSession session) {
+		Map<String, Object> httpSession = session.getAttributes();
+		
+		UserVO loginUser = (UserVO)httpSession.get("힝");
+		
+		if(loginUser!=null) {
+			return session.getId();
+		}else return loginUser.getUser_name();
+		
+	}
+>>>>>>> c07e54093199167f01e321ce98dffbab09b9ae63
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
