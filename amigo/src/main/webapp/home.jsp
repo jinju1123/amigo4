@@ -22,8 +22,6 @@
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
 		로그인전01_처음화면
-		
-		<a href="login.do">이메일 로그인</a>
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 
