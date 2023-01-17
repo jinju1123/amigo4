@@ -11,7 +11,7 @@ public class UserVO {
 	private String user_addr;
 	private String user_phone;
 	private String user_photo;
-	private String user_terms;
+	private boolean user_terms;
 	
 	public int getUser_no() {
 		return user_no;
@@ -67,13 +67,13 @@ public class UserVO {
 	public void setUser_photo(String user_photo) {
 		this.user_photo = user_photo;
 	}
-	public String getUser_terms() {
+
+	public boolean isUser_terms() {
 		return user_terms;
 	}
-	public void setUser_terms(String user_terms) {
+	public void setUser_terms(boolean user_terms) {
 		this.user_terms = user_terms;
 	}
-	
 	@Override
 	public String toString() {
 		return "UserVO [user_no=" + user_no + ", user_type=" + user_type + ", user_email=" + user_email + ", user_name="

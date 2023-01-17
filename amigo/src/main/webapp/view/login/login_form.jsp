@@ -24,17 +24,15 @@
 		
         <input type="text" name="user_email" class="form-control" id="user_email" placeholder="아이디(이메일)">
        	<br>
-       	<c:if test="${ !sessionScope.isLoginSuccess }">
-         	<h5>사용자를 찾지 못했습니다.</h5>
-        </c:if>
         
         <input type="password" name="user_pw" class="form-control" id="user_pw" placeholder="비밀번호"> 
         <br>
 		
-		<a href="#">비밀번호를 잊으셨나요?</a>
-         <c:if test="${ sessionScope.matchedPassword != null && !sessionScope.matchedPassword}">
-         	<h5>비밀번호가 일치하지 않습니다.</h5>
-         </c:if>
+       	<c:if test="${ !sessionScope.isLoginSuccess && sessionScope.isLoginSuccess != null && sessionScope.matchedPassword != null && !sessionScope.matchedPassword}">
+         	<h5>아이디와 비밀번호를 확인해주세요.</h5>
+        </c:if>
+         
+		<a href="search_pwd.do">비밀번호를 잊으셨나요?</a>
 		<br>
 		<br>
 		

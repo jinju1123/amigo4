@@ -2,6 +2,7 @@ package com.lec.amigo.mapper;
 
 import java.sql.ResultSet;
 
+
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
@@ -22,7 +23,7 @@ public class UserRowMapper implements RowMapper<UserVO>{
 		user.setUser_addr(rs.getString("user_addr"));
 		user.setUser_phone(rs.getString("user_phone"));
 		user.setUser_photo(rs.getString("user_photo"));
-		user.setUser_terms(rs.getString("user_terms"));
+		user.setUser_terms(rs.getBoolean("user_terms"));
 		return user;
 	}
 	
