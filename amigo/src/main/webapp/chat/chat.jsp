@@ -16,8 +16,13 @@
 	String name = request.getParameter("name");
 	
 	ChatRoom chatroom = new ChatRoom();
-	chatroom.setChat_index(index);	
 	
+	int user_no = Integer.parseInt(request.getParameter("user_no")); 
+			
+	chatroom.setChat_index(index);
+	chatroom.setUser_no(user_no);		
+	
+	System.out.println("유놈"+user_no + index);
 	
 	session.setAttribute("chatRoom", chatroom);
 	
@@ -101,7 +106,7 @@
 	</div>
 	<script>
 //채팅 서버 주소
-  var url = "ws://localhost:8088/amigo/chatHandler.do";
+  var url = "ws://192.168.0.101/:8088/amigo/chatHandler.do";
   let index = "<%=index%>";
   // 웹 소켓
   var ws;

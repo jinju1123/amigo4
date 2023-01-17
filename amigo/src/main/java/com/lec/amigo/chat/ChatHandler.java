@@ -32,7 +32,6 @@ public class ChatHandler extends TextWebSocketHandler{
 	
 	//private Map<ChatRoom, WebSocketSession> indexSessions = new HashMap();
 	
-
 	ChatDAO chatDao = new ChatDAO();
 	
 	//private static final Logger logger = LoggerFactory.getLogger(ChatServer.class);
@@ -42,19 +41,22 @@ public class ChatHandler extends TextWebSocketHandler{
 		System.out.println("서버연결");	
 		//세션리스트에 세션저장
 		sessions.add(session);
-		//유저-세션 저장
-		chatDao.setRoom(session, getSessionIndex(session));
+		//유저-세션 저장	
+		ChatRoom ch = getRoomUser(session);
+		if(ch!=null) chatDao.setRoom(ch);
 		
-		JDBCUtility.getDDD();
+		//일단 채팅방 생성시기는 계약이 성립됐을때
+		//인덱스만 가져오고 
 		
+			
 	}
-	
+
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		System.out.println("메세지");
-		System.out.println(message);
+
+
 		
-		String senderId = getSesID(session);
+		
 		String msg = message.getPayload();
 		
 		
@@ -78,36 +80,36 @@ public class ChatHandler extends TextWebSocketHandler{
 				
 		}		
 		
-		System.out.println(no+"노값!");
-		
 		
 		
 		//String id = chatDao.getSessionId(roomIndex);
 		 
 		
-	
-		int index=getSessionIndex(session);
+		int index=getRoomUser(session).getChat_index();
 		
-		System.out.println("인덱스입니다"+index);
 		
 		if (no.equals("1")) {
 			// 누군가 접속 > 1#아무개
 			
 			//for(String id:idList) {
 				for (WebSocketSession s : sessions) {
-					
-					System.out.println("세션의 아이디 확인용"+s.getId());
-			//		if(s.getId().equals(id)) {
 						if (s != session) { // 현재 접속자가 아닌 나머지 사람들				
 							try {
 								
-								int index2 = chatDao.getRoomIndex(s.getId());
-								
-								if(index==index2) {
-								
-								s.sendMessage(new TextMessage("1#" + sendUser + "#"));
+								//해당 세션의 인덱스 리스트를 속성으로 가져오고
+								//인덱스리스트를 for 돌려서 메세지 보낸사람의 인덱스와 일치하는것만 추출하고
+								//둘이 비교해서 보냄
+								if(getRoomUser(s)!=null) {
+									
+									boolean checkIndex = chatDao.checkRoomIndex(getRoomUser(s).getUser_no(), index);
+									
+									//해당 유저가 해당 인덱스를 가지고있기 때문에 
+									
+									System.out.println("작성자인덱스:"+index+"다른방인덱스:"+getRoomUser(s).getChat_index());				
+									if(checkIndex) {
+										s.sendMessage(new TextMessage("1#" + sendUser + "#"));
+									}	
 								}
-								
 								
 										
 								//s.getBasicRemote().sendText();
@@ -123,7 +125,7 @@ public class ChatHandler extends TextWebSocketHandler{
 				
 			
 		} else if (no.equals("2")) {
-			chatDao.insertChat(roomIndex, sendUser, text);
+			chatDao.insertChat(index, sendUser, text);
 		//	for(String id:idList) {			
 			// 누군가 메세지를 전송
 			for (WebSocketSession s : sessions) {
@@ -131,18 +133,21 @@ public class ChatHandler extends TextWebSocketHandler{
 
 					if (s != session) { // 현재 접속자가 아닌 나머지 사람들							
 						try {
-							System.out.println("2#" + senderId + ":" + text);
+							System.out.println("2#" + sendUser + ":" + text);
 							
 							//세션아이디로 인덱스를 구하고,
 							//해당인덱스와 일치하면 문자를 보내면됨
 							
-							int index2 = chatDao.getRoomIndex(s.getId());
-							
-							System.out.println("인덱스1:"+index+"인덱스2:"+index2);
-							
-							if(index==index2) {
-								s.sendMessage(new TextMessage("2#" + sendUser +"#" + text));
-							}			
+							if(getRoomUser(s)!=null) {
+								
+								
+								boolean checkIndex = chatDao.checkRoomIndex(getRoomUser(s).getUser_no(), index);
+								System.out.println("작성자인덱스:"+index+"다른방인덱스:"+getRoomUser(s).getChat_index());
+								if(checkIndex) {
+									s.sendMessage(new TextMessage("2#" + sendUser +"#" + text));
+									
+								}
+							}
 							//s.getBasicRemote().sendText("2#" + snderId +"#" + text);
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -164,10 +169,17 @@ public class ChatHandler extends TextWebSocketHandler{
 						if (s != session) { // 현재 접속자가 아닌 나머지 사람들
 							try {
 								
-								int index2 = chatDao.getRoomIndex(s.getId());
-								if(index==index2) {
-								s.sendMessage(new TextMessage("3#" + sendUser + "#"));
+								
+								if(getRoomUser(s)!=null) {
+									boolean checkIndex = chatDao.checkRoomIndex(getRoomUser(s).getUser_no(), index);
+									
+									System.out.println("작성자인덱스:"+index+"다른방인덱스:"+getRoomUser(s).getChat_index());
+								
+									if(checkIndex) {
+									s.sendMessage(new TextMessage("3#" + sendUser + "#"));
+									}
 								}
+								
 //								s.getBasicRemote().sendText("3#" + user + "#");
 							} catch (IOException e) {
 								e.printStackTrace();
@@ -186,43 +198,21 @@ public class ChatHandler extends TextWebSocketHandler{
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		
 		System.out.println(status.toString());
-		
-		
 		System.out.println("닫혀용!");
-	}
-	
-	public String getSesID(WebSocketSession session) {
-		Map<String, Object> httpSession = session.getAttributes();
-		UserVO user = (UserVO)httpSession.get("user");		
-		if(user!=null) {
-			System.out.println(user.getId()+"유저입니다");
-			return user.getId();
-		}
-		//UserVO loginUser = (UserVO)httpSession.get("한준호");
-		
-		//if(loginUser!=null) {
-			//return session.getId();
-		//}else 
-		return session.getId();
 		
 	}
 	
-	
-	public int getSessionIndex(WebSocketSession session) {
+	public ChatRoom getRoomUser(WebSocketSession session) {
 		Map<String, Object> httpSession = session.getAttributes();
-		ChatRoom index = (ChatRoom)httpSession.get("chatRoom");
-	
-		if(index.getChat_index()>0) {
-		
-			return index.getChat_index();
+		ChatRoom room = (ChatRoom)httpSession.get("chatRoom");
+		if(room.getChat_index()>0) {
+			return room;
 		}else {
 			System.out.println("인덱스 조회 실패!");
-			return 0;
+			return null;
 			
-		}
-		
-		
-		
-		
+		}	
 	}
+	
+
 }
