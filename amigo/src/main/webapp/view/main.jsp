@@ -11,7 +11,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인홈</title>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <![endif]-->
@@ -20,7 +20,12 @@
 	
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		메인홈
+		
+		<a href="sitter/sitter_service_main.jsp">펫시터</a>
+		<a href="#">추천산책루트</a>
+		<a href="#">병원</a>
+		<a href="#">고객센터</a>
+
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 

@@ -60,6 +60,17 @@ jQuery(document).ready(function ($) {
   target.parent().addClass("active");
 });
 
+/* 버튼 */
+
+/* 전체동의 동작 js */
+function selectAll(selectAll) {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  });
+}
+
 // Add active class on another page linked
 // ==========================================
 // $(window).on('load',function () {

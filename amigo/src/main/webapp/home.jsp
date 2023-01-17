@@ -12,7 +12,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인전01_처음화면</title>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <![endif]-->
@@ -21,8 +21,7 @@
 	
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		로그인전01_처음화면
-		
+			
 		<a href="login.do">이메일 로그인</a>
 		</div>
 	<%@include file="/includes/footer.jsp" %>
