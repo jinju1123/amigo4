@@ -204,7 +204,7 @@ public class ChatHandler extends TextWebSocketHandler{
 		
 		if(loginUser!=null) {
 			return session.getId();
-		}else return loginUser.getName();
+		}else return loginUser.getUser_name();
 		
 	}
 
