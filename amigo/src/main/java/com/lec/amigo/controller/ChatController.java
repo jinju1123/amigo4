@@ -19,4 +19,16 @@ public class ChatController {
 		return "chat/chat.jsp";
 	}
 	
+	@RequestMapping(value = "/chat/createChat.do", method = { RequestMethod.GET })
+	public String createChat (HttpServletRequest req, HttpServletResponse resp) {
+		
+		String name = req.getParameter("name");
+		
+		
+		
+		
+		
+		return "my_chat_list.jsp";
+	}
+	
 }

@@ -21,12 +21,7 @@
 	
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		
-		<form action="search_pwd.do" method="post">
-		<input type="text" name="user_email" id="user_email" placeholder="이메일"><br><br>
-		<input type="submit" value="임시 비밀번호 발급"></a>
-		</form>
-		
+			<a href="createChat.do?name=한준호">완료</a>
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 
