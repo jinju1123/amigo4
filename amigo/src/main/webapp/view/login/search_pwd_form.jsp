@@ -27,6 +27,10 @@
 		<input type="submit" value="임시 비밀번호 발급"></a>
 		</form>
 		
+		<br>
+		<a href="login.do">로그인</a>
+		<a href="">회원가입</a>
+		
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 

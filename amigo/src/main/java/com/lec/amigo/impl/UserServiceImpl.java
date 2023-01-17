@@ -1,6 +1,5 @@
 package com.lec.amigo.impl;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
@@ -27,14 +26,16 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void sendEmail(UserVO vo, String div) {
 		
+		UserVO user = userDAO.getUser(vo.getUser_email());
+		
 		// mail server 설정
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com";
-		String hostSMTPid = "jinjoo__@naver.com";
-		String hostSMTPpwd = "!gbs0k7p9ab";
+		String hostSMTPid = "amigo931224";
+		String hostSMTPpwd = "tjdgud!2";
 	
 		// 보내는 사람 Email, 제목, 내용
-		String fromEmail = "jinjoo__@naver.com";
+		String fromEmail = "amigo931224@naver.com";
 		String fromName = "Amigo";
 		String subject = "";
 		String msg = "";
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService{
 			subject = "Amigo 임시 비밀번호";
 			msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
 			msg += "<h3 style='color: blue;'>";
-			msg += vo.getUser_name() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
+			msg += user.getUser_name() + "님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
 			msg += "<p>임시 비밀번호 : ";
 			msg += vo.getUser_pw() + "</p></div>";
 		}
@@ -61,7 +62,7 @@ public class UserServiceImpl implements UserService{
 
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
 			email.setTLS(true);
-			email.addTo(mail, charSet);
+			email.addTo(mail, user.getUser_name());
 			email.setFrom(fromEmail, fromName, charSet);
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);
@@ -90,6 +91,7 @@ public class UserServiceImpl implements UserService{
 			}
 			vo.setUser_pw(pw);
 			// 비밀번호 변경
+			
 			userDAO.updatePw(vo);
 			// 비밀번호 변경 메일 발송
 			sendEmail(vo, "searchpw");
