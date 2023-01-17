@@ -21,7 +21,7 @@
 	
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		My11_반려동물프로필 체크리스트 ( 삭제 했음 )
+		My11_반려동물프로필 체크리스트
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 
