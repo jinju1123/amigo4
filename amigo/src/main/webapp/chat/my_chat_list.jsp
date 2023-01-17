@@ -6,15 +6,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
-
-	<%
-		ChatDAO dao = new ChatDAO();
-		List<ChatVO> chatList = dao.getMyChatList("한준호");
+	<%	
+	ChatDAO dao = new ChatDAO();
+	List<ChatVO> chatList = dao.getMyChatList("한준호");	
 	%>
-	
-
-
+<head>
 <script
   src="https://code.jquery.com/jquery-3.6.3.min.js"
   integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
@@ -23,31 +19,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
-<title>My12_찜,예약 없을때 ~ MY13_찜,예약 있을때</title>
+<title>내 채팅방 목록</title>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <![endif]-->
 </head>
 <body>
-	
 	<%@include file="/includes/header.jsp" %>
-		<div class="container">
-		
-			
-			<h4>찜 목록 및 예약확인</h4>
-			<p>펫시터</p>
-			<hr>
-			<div style="text-align: center">
-			
-			<c:set var="chatList" value="<%=chatList %>"></c:set>		
-			<c:if test="${chatList.isEmpty()}">	
-			<p><b>선호 및 예약 펫시터가 없습니다</b></p>
-				<button type="button" class="btn btn-secondary">펫시터보기</button>
-			</div>
-			</c:if>
-			<c:if test="${!chatList.isEmpty() }">
-			<table>		
-			<c:forEach var="chat" items="${chatList }">
+		<div class="container">		
+		<table>		
+			<c:forEach var="chat" items="<%=chatList %>">
 			<tr>
 				<td><a href="chat.jsp?index=${chat.getIndex()}&name=${chat.getUser()}&user_no=5">방번호:${chat.getIndex() }</a></td>
 				<td>마지막작성자:${chat.getUser()}</td>
@@ -57,10 +38,9 @@
 				</c:if>
 			</tr>
 			</c:forEach>
-			</c:if>
+			
 		</table>
 			
-	
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 
