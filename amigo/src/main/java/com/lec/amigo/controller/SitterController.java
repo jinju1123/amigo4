@@ -21,12 +21,15 @@ public class SitterController {
 	
 
 	// 시터가입 화면->컨트롤러->서비스->다오
-	@RequestMapping(value = "/sitter_apply_form.do", method = { RequestMethod.POST })
+	@RequestMapping(value = "/view/apply/apply_form.do", method = { RequestMethod.POST })
 	public String SitApply (SitterVO sittervo, UserVO uservo) {
 		
 		System.out.println(sittervo.toString());
+		
+		System.out.println("gggggggggggggggggggggggggggggggggggg");
+		
+		
 		return null;
-		 
 		
 	
 	}

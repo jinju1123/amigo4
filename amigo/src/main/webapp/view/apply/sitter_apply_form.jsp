@@ -21,7 +21,8 @@
 	
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
-			<form action="apply_form" method="post">
+		
+			<form action="apply_form.do" method="post">
 			<div class="row">
 				<h4>1. 기본정보</h4>
 				<div class="sit_photo">프로필 사진</div>
@@ -41,7 +42,7 @@
 				<div class="id_wrap">
 					<div class="user_name">지원자 성명</div>
 					<div class="id_input_box">
-					<input class="id_input text-center">
+					<input class="id_input text-center" name="홍길동">
 					</div>
 				</div><br>
 				
@@ -188,13 +189,32 @@
  						 오후타임(오후12:00~오후06:00)
  						 </label>
 					</div>
-				
 				</div>
+				
+				<div class="care_wrap">
+					<div class="sit_care_exp">[선택]타인의 반려동물을 돌봐준 경험</div>
+					<div class="care_input_box">
+					<input class="care_input text-center" name="sit_care_exp" placeholder="그 외 반려동물 관련 경력 또는 경험에 대해서 알려주세요">
+				</div> 
+					<span>04년생부터(만 18세 이상) 지원이 가능합니다.</span>
+				</div><br>
+
+				
+				<div class="intro_wrap">
+					<div class="user_intro">자기소개</div>
+					<div class="intro_input_box">
+					<input class="intro_input text-center" name="sit_intro">
+				</div>
+					<span>입력한 휴대폰 번호로 합격 여부를 알려드립니다.</span>
+				</div><br>
 				
 				
 				
 				
 			</div>
+			
+			<button type="submit">보내기</button>
+			
 			</form>		
 		</div>
 	<%@include file="/includes/footer.jsp" %>

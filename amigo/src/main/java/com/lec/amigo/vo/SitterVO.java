@@ -1,11 +1,10 @@
 package com.lec.amigo.vo;
 // 23p 펫시터지원서.  일단 시터정보 모두 가져옴.
-import java.beans.Transient;
+//import java.beans.Transient;
 
 public class SitterVO {     // SitterApplyVO  s-sit사진, m-회원명, s-성별, s-birth, m-연락처, 
 							//  m-주소, s-흡연, s-현재일, s-가능일, s-시간대, s-반려경험, s-타인반려, s-자기소개
 							//  s 는 펫시터,  m 은 회원(멤버)
-	
 		
 	private int sit_no;
 	private int user_no;
