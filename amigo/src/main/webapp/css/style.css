@@ -201,4 +201,16 @@ i {
     height: 1px;
     background: #eee;
   }
+
+  /* hr */
+  hr {
+    height: 0px;
+    border-radius: 2px;
+    $color: teal;
+    color: $color;
+    border: 2px solid currentColor;
+    width: 100%;
+  }
+
+  /* 구글 버튼 */
 }
