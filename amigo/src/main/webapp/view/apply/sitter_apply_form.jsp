@@ -22,7 +22,7 @@
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
 		
-			<form action="apply_form.do" method="post">
+			<form action="sitter_apply_form.do" method="post">
 			<div class="row">
 				<h4>1. 기본정보</h4>
 				<div class="sit_photo">프로필 사진</div>
@@ -96,69 +96,51 @@
 					
 					<div class="form-check">
   						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
- 						 <label class="form-check-label" for="flexRadioDefault1">
-  						  주부
- 						 </label>
+ 						 <label class="form-check-label" for="flexRadioDefault1">주부</label>
 					</div>
 					<div class="form-check">
  						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
- 						 <label class="form-check-label" for="flexRadioDefault2">
- 						  학생
- 						 </label>
+ 						 <label class="form-check-label" for="flexRadioDefault2">학생</label>
 					</div>
 					<div class="form-check">
  						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
- 						 <label class="form-check-label" for="flexRadioDefault2">
- 						  직장인
- 						 </label>
+ 						 <label class="form-check-label" for="flexRadioDefault2">직장인</label>
 					</div>
 					<div class="form-check">
  						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
- 						 <label class="form-check-label" for="flexRadioDefault2">
- 						  프리랜서
- 						 </label>
+ 						 <label class="form-check-label" for="flexRadioDefault2">프리랜서</label>
 					</div>
 					<div class="form-check">
  						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
- 						 <label class="form-check-label" for="flexRadioDefault2">
- 						  구직자
- 						 </label>
+ 						 <label class="form-check-label" for="flexRadioDefault2">구직자</label>
 					</div>
 					<div class="form-check">
  						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
- 						 <label class="form-check-label" for="flexRadioDefault2">
- 						 직접 입력
- 						 </label>
+ 						 <label class="form-check-label" for="flexRadioDefault2">직접 입력</label>
 					</div>
 					<input class="sitter_others_input text-center" placeholder="이곳에 직접 입력해주세요">
+				</div><br><br>
 				
-				</div>
 				<hr />
 				<h4>2. 활동 정보</h4>
 				
 				<div class="day_wrap">
 					<div class="sitter_job">활동 가능한 일수(한 달 기준)</div>
 					
-					<div class="form-check">
-  						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
- 						 <label class="form-check-label" for="flexRadioDefault1">
-  						  주말 포함한 30일 모두 가능합니다.
- 						 </label>
+					<div class="form-check2">
+  						<input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
+ 						 <label class="form-check-label" for="flexRadioDefault1">주말 포함한 30일 모두 가능합니다.</label>
 					</div>
-					<div class="form-check">
- 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
- 						 <label class="form-check-label" for="flexRadioDefault2">
- 						  평균 20일 이상 가능합니다.
- 						 </label>
+					<div class="form-check2">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">평균 20일 이상 가능합니다.</label>
 					</div>
-					<div class="form-check">
- 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
- 						 <label class="form-check-label" for="flexRadioDefault2">
- 						  평균 20일 이하 가능합니다.
- 						 </label>
+					<div class="form-check2">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">평균 20일 이하 가능합니다.</label>
 					</div>
-					<div class="form-check">
- 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+					<div class="form-check2">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
  						 <label class="form-check-label" for="flexRadioDefault2">
  						  주말만 가능합니다.<br>
  						  <span class="sitter_weekends">(방문 펫시터로 활동이 어려울 수 있습니다.)</span>
@@ -171,23 +153,17 @@
 				<div class="job_wrap">
 					<div class="sitter_job">활동 가능한 시간대</div>
 					
-					<div class="form-check">
-  						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
- 						 <label class="form-check-label" for="flexRadioDefault1">
-  						  모두 가능합니다.
- 						 </label>
+					<div class="form-check3">
+  						<input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault1">
+ 						 <label class="form-check-label" for="flexRadioDefault1">모두 가능합니다.</label>
 					</div>
-					<div class="form-check">
- 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
- 						 <label class="form-check-label" for="flexRadioDefault2">
- 						 오전타임(오전8:00~오후12:00)
- 						 </label>
+					<div class="form-check3">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">오전타임(오전8:00~오후12:00)</label>
 					</div>
-					<div class="form-check">
- 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
- 						 <label class="form-check-label" for="flexRadioDefault2">
- 						 오후타임(오후12:00~오후06:00)
- 						 </label>
+					<div class="form-check3">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">오후타임(오후12:00~오후06:00)</label>
 					</div>
 				</div>
 				
@@ -213,7 +189,7 @@
 				
 			</div>
 			
-			<button type="submit">보내기</button>
+			<button type="submit" class="btn btn-primary btn-lg btn-block">보내기</button>
 			
 			</form>		
 		</div>
