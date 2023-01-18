@@ -21,7 +21,17 @@
 	
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
-		My08_반려동물프로필(없으면)~My09(있으면)
+		
+		<c:if test="${ dogList.isEmpty() }">
+				<h5><p class="bg-danger text-white">반려동물이 없습니다.</p></h5>
+				                        <p>반려동물 프로필을 등록하세요!</p>
+				    <a href="amigo_profile_insert.jsp" class="col-1 btn btn-primary">등록하기</a>
+			</c:if>
+		
+		
+		
+		
+		
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 
