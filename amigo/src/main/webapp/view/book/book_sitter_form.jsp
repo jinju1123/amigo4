@@ -1,3 +1,4 @@
+<%@page import="com.lec.amigo.vo.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
@@ -27,12 +28,16 @@
     <script src="js/html5shiv.js"></script>
     <![endif]-->
     
+        
     <style>
     	td{
     		width:100px;heigth:500px;
     	}
     </style>
 </head>
+
+<% UserVO user=(UserVO)session.getAttribute("user");%>
+
 <body>
 	
 	<%@include file="/includes/header.jsp" %>
@@ -50,14 +55,12 @@
 			<br>
 			
 			
-			<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+			<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#calendar">
 				<img src="http://192.168.0.101:8088/amigo/resources/img/dool.png" alt="달력" /> 	
 			</button><br>
 			
-			
-			이용주소 <input type="text" name="address" value="" /><button>변경</button><br>
-			반려동물 <input type="text" name="pet" value=""/><button>변경</button><br>
-			휴대전화 <input type="text" name="phone" value=""/><button>변경</button><br>
+			이용주소 <input type="text" name="address" value="" /><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#address">변경</button><br>
+			휴대전화 <input type="text" name="phone" value=""/><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#phone">변경</button><br>
 			
 			<b>특이사항</b><br>
 			<textarea></textarea><br>
@@ -82,8 +85,9 @@
 	<%@include file="/includes/footer.jsp" %>
 	
 	
+<!-- 모달창 -->
 	
-<div class="modal" id="myModal">
+<div class="modal" id="calendar">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -101,6 +105,72 @@
 		<body>
    <!-- 시작시 기본 날짜 설정은 value를 이용 -->
    		<input type="text" id="datepicker" class="form-control"/>
+		</body>
+      	
+        
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="address">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">주소변경 모달창</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+
+		<body>
+   <!-- 시작시 기본 날짜 설정은 value를 이용 -->
+   		<input type="text" id="datepicker" class="form-control"/>
+		</body>
+      	
+        
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="phone">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">휴대폰변경 모달창</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+		<body>
+   <!-- 시작시 기본 날짜 설정은 value를 이용 -->
+   		<input type="text" id="datepicker" class="form-control"/>
+   		
+   		
+   		
+   		
+   		
 		</body>
       	
         

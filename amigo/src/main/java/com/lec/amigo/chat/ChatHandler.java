@@ -53,13 +53,8 @@ public class ChatHandler extends TextWebSocketHandler{
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-
-
-		
-		
-		String msg = message.getPayload();
-		
-		
+	
+		String msg = message.getPayload();				
 		String no=null;
 		int roomIndex=0;
 		String sendUser=null;

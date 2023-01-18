@@ -28,24 +28,21 @@ public class ChatDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public int idCheck(String id) {
-		
+	public int idCheck(int no) {
 		boolean check = false;
-		Connection conn = JDBCUtility.getConnection();
-		
-		int asd = 0;
-		
-		String sql = "select * from chatMessage where chat_user=?";
+		Connection conn = JDBCUtility.getConnection();		
+		int asd = 0;	
+		String sql = "select * from sit_chat where user_no=?";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setInt(1, no);
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
-				asd = rs.getInt("chat_index");
+				asd = rs.getInt("sitt_chat_index");
 				JDBCUtility.commit(conn);
 				return asd;
 			}else {
@@ -67,7 +64,8 @@ public class ChatDAO {
 	public List<ChatVO> getChatList(int index){
 		List<ChatVO> chatList = new ArrayList<ChatVO>();
 		Connection conn = JDBCUtility.getConnection();
-		String sql = "select * from chatMessage where chat_index=?";
+		String sql = "SELECT sitt_chat_index,user_name, sitt_chat_content, sitt_chat_regdate\r\n"
+				+ ",sitt_chat_readis FROM sit_chat s, user u where sitt_chat_index=?";
 		
 		ResultSet rs =null;
 		PreparedStatement pstmt=null;
@@ -79,11 +77,11 @@ public class ChatDAO {
 			
 			while(rs.next()) {
 				ChatVO chat = new ChatVO();
-				chat.setIndex(rs.getInt("chat_index"));
-				chat.setUser(rs.getString("chat_user"));
-				chat.setContent(rs.getString("chat_content"));
-				chat.setDate(rs.getDate("chat_reg_date"));
-				chat.setRead_is(rs.getBoolean("read_is"));
+				chat.setIndex(rs.getInt("sitt_chat_index"));
+				chat.setUser(rs.getString("user_name"));
+				chat.setContent(rs.getString("sitt_chat_content"));
+				chat.setDate(rs.getDate("sitt_chat_regdate"));
+				chat.setRead_is(rs.getBoolean("sitt_chat_readis"));
 				chatList.add(chat);
 			}
 			
@@ -241,8 +239,7 @@ public class ChatDAO {
 		return null;
 	}
 	
-	public List<ChatVO> getMyChatList(String name){
-			
+	public List<ChatVO> getMyChatList(String name){			
 		String sql = "select distinct chat_index from chatmessage where chat_user=?";
 		//Object[] args = {sql, name};
 		
