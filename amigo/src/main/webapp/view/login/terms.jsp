@@ -32,6 +32,7 @@
  <!-- header end  -->
 
  <!-- 약관 동의문서 -->
+<form action="signup.do">
 <div class="container">
     <div>
         <h4>어서오세요</h4>
@@ -46,19 +47,23 @@
 <br />
 <input type='checkbox'
        name='amigoTAC' 
-       value='check1'/> <a href="#">AM!GO약관동의</a>
+       value='check1'
+       required/> <a href="#">AM!GO약관동의</a>
 <br />
 <input type='checkbox' 
        name='amigoTAC' 
-       value='check2' /> <a href="#">개인 정보 처리 방침 동의</a>
+       value='check2' 
+       required/> <a href="#">개인 정보 처리 방침 동의</a>
 <br />
 <input type='checkbox' 
        name='amigoTAC' 
-       value='check3' /> <a href="#">안전보상 프로그램 약관동의</a>
+       value='check3'
+       required/> <a href="#">안전보상 프로그램 약관동의</a>
 <br />
 <input type='checkbox' 
        name='amigoTAC' 
-       value='check4' /> <a href="#">펫시터약관동의</a>
+       value='check4'
+       required /> <a href="#">펫시터약관동의</a>
     </div>
     <div>
         <img
@@ -68,9 +73,10 @@
             />
     </div>
     <div>
-        <button type="button" class="btn btn-primary btn-lg">다음으로</button>
+        <button type="submit" class="btn btn-primary btn-lg" >다음으로</button>
     </div>
 </div>
+</form>
 
  <!-- 약관 동의문서 end -->
  

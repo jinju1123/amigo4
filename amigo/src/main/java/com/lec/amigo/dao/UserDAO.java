@@ -29,10 +29,14 @@ public class UserDAO {
 	
 	private String selectByEmail = "select * from user where user_email = ?";
 	private String updatePw = "";
+	private String insertUser = "";
+	private String emailCheck = "";
 	
 	@PostConstruct
 	public void getSqlPropeties() {
-		updatePw = environment.getProperty("updatePw");
+		updatePw   = environment.getProperty("updatePw");
+		insertUser = environment.getProperty("insertUser");
+		emailCheck = environment.getProperty("emailCheck");
 	}
 	
 	private Connection conn = null;
@@ -72,6 +76,17 @@ public class UserDAO {
 
 	public int updatePw(UserVO vo) {
 		return jdbcTemplate.update(updatePw, vo.getUser_pw(), vo.getUser_email());
+	}
+
+	public UserVO insertUser(UserVO userVO) {
+		userVO.setUser_type((userVO.getUser_type() != null ? "A" : "U"));
+		jdbcTemplate.update(insertUser, userVO.getUser_type(), userVO.getUser_email(), userVO.getUser_pw(), userVO.getUser_name(), userVO.getUser_nick(), userVO.getUser_addr(), userVO.getUser_phone());
+		return userVO;
+	}
+
+	public int emailCheck(String user_email) {
+		int cnt = jdbcTemplate.queryForObject(emailCheck, Integer.class, user_email);
+		return cnt;
 	}
 
 }

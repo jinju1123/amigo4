@@ -29,7 +29,7 @@
 		
 		<br>
 		<a href="login.do">로그인</a>
-		<a href="">회원가입</a>
+		<a href="terms.do">회원가입</a>
 		
 		</div>
 	<%@include file="/includes/footer.jsp" %>

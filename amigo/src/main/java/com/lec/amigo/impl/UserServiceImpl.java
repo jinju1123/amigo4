@@ -99,7 +99,16 @@ public class UserServiceImpl implements UserService{
 			out.print("이메일로 임시 비밀번호를 발송하였습니다.");
 			out.close();
 		}
+
+	}
+
+	public UserVO insertUser(UserVO userVO) {
+		return userDAO.insertUser(userVO);
 		
+	}
+
+	public int emailCheck(String user_email) {
+		return userDAO.emailCheck(user_email);
 	}
 
 }
