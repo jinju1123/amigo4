@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -73,38 +73,71 @@
     </nav>
     <!-- 네비바 종료 -->
 
-    <!-- 마이페이지 시작 -->
-    <div class="container" align="center" id="myPageTop">
-      <ul class="list-group list-group-flush" align="left">
-        <li class="list-group-item">
-          <a href="user_Profil.jsp" class="mypage_link">내 프로필 관리</a>
-          <img src="../images/codeit.png" alt="코드잇 이미지" />
-        </li>
-        <li class="list-group-item">
-          <a href="dog_Profil.jsp" class="mypage_link">반려동물 프로필</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#" class="mypage_link">찜 목록 & 예약 확인</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#" class="mypage_link">고객센터</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#" class="mypage_link">공지사항</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#" class="mypage_link">환경설정</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#" class="mypage_link">펫시터 지원하기</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#" class="mypage_link">펫시터모드로 전환</a>
-        </li>
-      </ul>
-    </div>
+    <!-- profile page 시작 -->
+
+    <!-- Profile nav -->
+    <!-- user의 프로필 정보를 가져와야합니다. -->
+    <div class="myProfileMainBox">
+      <div class="profileNav">
+        <h4>이진주님,</h4>
+        <!-- 이곳에 유저의 이름이 들어와야합니다. -->
+        <h4>안녕하세요!</h4>
+        <!-- 프로필 사진 업로드 -->
+        <div class="container">
+          <div class="picture-container">
+            <div class="picture">
+              <img
+                src="https://lh3.googleusercontent.com/LfmMVU71g-HKXTCP_QWlDOemmWg4Dn1rJjxeEsZKMNaQprgunDTtEuzmcwUBgupKQVTuP0vczT9bH32ywaF7h68mF-osUSBAeM6MxyhvJhG6HKZMTYjgEv3WkWCfLB7czfODidNQPdja99HMb4qhCY1uFS8X0OQOVGeuhdHy8ln7eyr-6MnkCcy64wl6S_S6ep9j7aJIIopZ9wxk7Iqm-gFjmBtg6KJVkBD0IA6BnS-XlIVpbqL5LYi62elCrbDgiaD6Oe8uluucbYeL1i9kgr4c1b_NBSNe6zFwj7vrju4Zdbax-GPHmiuirf2h86eKdRl7A5h8PXGrCDNIYMID-J7_KuHKqaM-I7W5yI00QDpG9x5q5xOQMgCy1bbu3St1paqt9KHrvNS_SCx-QJgBTOIWW6T0DHVlvV_9YF5UZpN7aV5a79xvN1Gdrc7spvSs82v6gta8AJHCgzNSWQw5QUR8EN_-cTPF6S-vifLa2KtRdRAV7q-CQvhMrbBCaEYY73bQcPZFd9XE7HIbHXwXYA=s200-no"
+                class="picture-src"
+                id="wizardPicturePreview"
+                title=""
+              />
+              <input type="file" id="wizard-picture" class="" />
+            </div>
+            <h6 class="">사진업로드</h6>
+          </div>
+        </div>
+        <!-- 프로필 사진 업로드 종료 -->
+        <!-- profile nav end -->
+      </div>
+
+      <!-- 프로필 상세 -->
+    
+      <div class="input-group mb-3">
+        <label for="userEmail" class="form-label">이메일 아이디</label>
+        <input type="email" class="form-control" id="userEmail" placeholder="misty12024@gmail.com" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">변경</button>
+      </div>
+      <div class="mb-3">
+        <label for="nickname" class="form-label">닉네임 변경</label>
+        <input type="text" class="form-control" id="nickname">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">비밀번호 변경</label>
+        <input type="password" class="form-control" id="password">
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">휴대폰 번호</label>
+        <input type="tel" class="form-control" id="phone">
+      </div>
+      <div class="mb-3">
+        <label for="addr" class="form-label">내 주소</label>
+        <input type="text" class="form-control" id="addr">
+      </div>
+      
+    <!-- 프로필 상세 end-->
+    <!-- profile page 종료 -->
     <!-- Footer -->
     <footer class="bg-primary text-center text-white">
+      <!-- Grid container -->
+      <div class="container">
+        <!-- Section: Social media -->
+        <section class="mb-4"></section>
+
+        <!-- Section: Form -->
+      </div>
+      <!-- Grid container -->
+
       <!-- Copyright -->
       <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
         © 2022 Copyright:

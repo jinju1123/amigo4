@@ -21,6 +21,7 @@ import com.lec.amigo.vo.ChatVO;
 import com.lec.amigo.vo.UserVO;
 
 
+
 @Repository("chatdao")
 public class ChatDAO {
 	
@@ -28,24 +29,30 @@ public class ChatDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public int idCheck(String id) {
-		
+	public int idCheck(int no) {
 		boolean check = false;
-		Connection conn = JDBCUtility.getConnection();
+		Connection conn = JDBCUtility.getConnection();		
+		int asd = 0;	
+		String sql = "select count(user_no) from sit_chat where user_no=?";	
+		asd = jdbcTemplate.queryForObject(sql, Integer.class);
 		
-		int asd = 0;
+		if(asd>0) {
+			
+			System.out.println("성공!");
+			return asd;
+		}
 		
-		String sql = "select * from chatMessage where chat_user=?";
+		/*
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setInt(1, no);
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
-				asd = rs.getInt("chat_index");
+				asd = rs.getInt("sitt_chat_index");
 				JDBCUtility.commit(conn);
 				return asd;
 			}else {
@@ -58,6 +65,7 @@ public class ChatDAO {
 		}finally {
 			JDBCUtility.close(conn, rs, pstmt);
 		}
+		*/
 		
 			
 		return asd;
@@ -67,8 +75,16 @@ public class ChatDAO {
 	public List<ChatVO> getChatList(int index){
 		List<ChatVO> chatList = new ArrayList<ChatVO>();
 		Connection conn = JDBCUtility.getConnection();
-		String sql = "select * from chatMessage where chat_index=?";
+		String sql = "SELECT sitt_chat_index,user_name, sitt_chat_content, sitt_chat_regdate"
+				+ ",sitt_chat_readis FROM sit_chat s, user u where sitt_chat_index=?";
 		
+		Object[] args = {index};
+		chatList = jdbcTemplate.query(sql, args, new ChatRowMapper());
+		
+		return chatList;
+		
+		
+		/*
 		ResultSet rs =null;
 		PreparedStatement pstmt=null;
 		
@@ -79,11 +95,11 @@ public class ChatDAO {
 			
 			while(rs.next()) {
 				ChatVO chat = new ChatVO();
-				chat.setIndex(rs.getInt("chat_index"));
-				chat.setUser(rs.getString("chat_user"));
-				chat.setContent(rs.getString("chat_content"));
-				chat.setDate(rs.getDate("chat_reg_date"));
-				chat.setRead_is(rs.getBoolean("read_is"));
+				chat.setIndex(rs.getInt("sitt_chat_index"));
+				chat.setUser(rs.getString("user_name"));
+				chat.setContent(rs.getString("sitt_chat_content"));
+				chat.setDate(rs.getDate("sitt_chat_regdate"));
+				chat.setRead_is(rs.getBoolean("sitt_chat_readis"));
 				chatList.add(chat);
 			}
 			
@@ -94,13 +110,26 @@ public class ChatDAO {
 			JDBCUtility.close(conn, rs, pstmt);
 		}
 		
-		return chatList;
+		*/
+		
+		//return chatList;
 	}
 	
 	public void insertChat(int index, String user, String content) {
 		
 		Connection conn = JDBCUtility.getConnection();
-		String sql = "insert into chatMessage(chat_index, chat_user, chat_content, chat_reg_date, read_is) values(?,?,?,SYSDATE(),0)";
+		String sql = "insert into sit_chat(sitt_chat_index, user_no, sitt_chat_content, sitt_chat_reg_date, sitt_read_is, sitt_chat_file, sitt_chat_emo) values(?,?,?,SYSDATE(),0,?,?)";
+		
+	
+		
+		try {
+			jdbcTemplate.update(sql, index, user, content, null, null);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		/*
 		
 		int row = 0;
 		PreparedStatement pstmt=null;
@@ -126,19 +155,32 @@ public class ChatDAO {
 		}finally {
 			JDBCUtility.close(conn, null, pstmt);
 		}
+		*/
 		
 		
 	}
 	
 	public void setRoom(ChatRoom ch){
-		String sql = "insert into chatroom values(?,?)";
+		
+		
+		String sql = "insert into chat_room values(?,?)";
+		
+		
 		Connection conn = JDBCUtility.getConnection();
 		PreparedStatement pstmt = null;
 		
 		int chat_index = ch.getChat_index();
 		int user_no = ch.getUser_no();
 		
+		try {
+			jdbcTemplate.update(sql, chat_index, user_no);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
+		
+		
+		/*
 		int row=0;
 		
 		try {
@@ -171,13 +213,21 @@ public class ChatDAO {
 		}finally {
 			JDBCUtility.close(conn, null, pstmt);
 		}
+		*/
 		
 	}
 	
 	public boolean checkRoomIndex(int user_no, int roomindex) {
 	
-		String sql = "select chat_index from chatRoom where user_no=? and chat_index=?";
+		String sql = "select count(chat_index) from chat_room where user_no=? and chat_index=?";
 		
+		int row = jdbcTemplate.queryForObject(sql, Integer.class);
+		
+		if(row>0) {
+			return true;
+		}
+		
+		/*
 		Connection conn = JDBCUtility.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
@@ -204,13 +254,18 @@ public class ChatDAO {
 		}
 		
 		return false; 
+		*/
+		
+		return false;
 	}
 	
 	
 	
 	public String getSessionId(int roomNo) {
 		
-		String sql = "select session_id from chatRoom where chat_index=?";
+		String sql = "select distinct session_id from chatRoom where chat_index=?";
+		
+
 		Connection conn = JDBCUtility.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
@@ -241,8 +296,7 @@ public class ChatDAO {
 		return null;
 	}
 	
-	public List<ChatVO> getMyChatList(String name){
-			
+	public List<ChatVO> getMyChatList(String name){			
 		String sql = "select distinct chat_index from chatmessage where chat_user=?";
 		//Object[] args = {sql, name};
 		

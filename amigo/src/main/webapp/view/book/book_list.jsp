@@ -1,3 +1,5 @@
+<%@page import="com.lec.amigo.vo.UserVO"%>
+<%@page import="com.lec.amigo.dao.UserDAO"%>
 <%@page import="com.lec.amigo.vo.ChatVO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.lec.amigo.dao.ChatDAO"%>
@@ -7,9 +9,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<%
 		ChatDAO dao = new ChatDAO();
+		
+		
+		UserVO user = (UserVO)session.getAttribute("user");
+		
+		user.getUser_no();
+	
 		List<ChatVO> chatList = dao.getMyChatList("한준호");
 	%>
 	
@@ -49,7 +56,7 @@
 			<table>		
 			<c:forEach var="chat" items="${chatList }">
 			<tr>
-				<td><a href="chat.jsp?index=${chat.getIndex()}&name=${chat.getUser()}&user_no=5">방번호:${chat.getIndex() }</a></td>
+				<td><a href="/amigo/chat/chat.jsp?index=${chat.getIndex()}&name=${chat.getUser()}&user_no=5">방번호:${chat.getIndex() }</a></td>
 				<td>마지막작성자:${chat.getUser()}</td>
 				<td>내용:${chat.getContent() }</td>				
 				<c:if test="${!chat.isRead_is() }"> <!--  -->

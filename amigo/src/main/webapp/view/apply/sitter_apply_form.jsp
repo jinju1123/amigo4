@@ -22,6 +22,176 @@
 	<%@include file="/includes/header.jsp" %>
 		<div class="container">
 		
+			<form action="sitter_apply_form.do" method="post">
+			<div class="row">
+				<h4>1. 기본정보</h4>
+				<div class="sit_photo">프로필 사진</div>
+					<div class="myPhoto text-center">
+					<img class="profile-user-img img-fluid img-circle"
+					src="${path}/dist/img/profile/${login.userImg}"
+					alt="User profile picture">
+				</div>
+				<br>
+				<div class="myPhotoUpload text-center">
+					<a href="#" class="btn btn-primary btn-xs" data-toggle="modal"
+					data-target="#userPhotoModal"> <i class="fa fa-photo">
+					업로드</i>
+					</a>
+				</div>
+				
+				<div class="id_wrap">
+					<div class="user_name">지원자 성명</div>
+					<div class="id_input_box">
+					<input class="id_input text-center" name="홍길동">
+					</div>
+				</div><br>
+				
+				<div class="gender_wrap">
+					<div class="sit_gender">성별</div>
+					<div class="id_input_box">
+					<input type="radio"  class="btn-check" name="g_options" id="option1" autocomplete="off">
+					<label class="btn btn-secondary" for="option1">남성</label>
+					<input type="radio"  class="btn-check" name="g_options" id="option2" autocomplete="off">
+					<label class="btn btn-secondary" for="option1">여성</label>
+					</div>
+				</div><br><br> 
+				
+				<div class="birth_wrap">
+					<div class="sit_birth">생년월일</div>
+					<div class="birth_input_box">
+					<input class="birth_input text-center">
+				</div>
+					<span>04년생부터(만 18세 이상) 지원이 가능합니다.</span>
+				</div><br>
+
+				
+				<div class="phone_wrap">
+					<div class="user_phone">연락처</div>
+					<div class="phone_input_box">
+					<input class="phone_input text-center">
+				</div>
+					<span>입력한 휴대폰 번호로 합격 여부를 알려드립니다.</span>
+				</div><br>
+				
+				<div class="addr_wrap">
+					<div class="user_addr">주소</div>
+					<div class="addr_input_box">
+					<input class="phone_input text-center">
+				</div>
+					<span>시/군/구까지 입력해주세요.</span>
+				</div><br>
+				
+				<div class="smoking_wrap">
+					<div class="sit_smoking">흡연여부</div>
+					<div class="smiking_input_box">
+					<input type="radio"  class="btn-check" name="s_options" id="option1" autocomplete="off">
+					<label class="btn btn-secondary" for="option1">흡연</label>
+					<input type="radio"  class="btn-check" name="s_options" id="option2" autocomplete="off">
+					<label class="btn btn-secondary" for="option1">비흡연</label>
+					</div>
+				</div><br><br>
+				
+				<div class="job_wrap">
+					<div class="sitter_job">현재 하시는 일</div>
+					
+					<div class="form-check">
+  						<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+ 						 <label class="form-check-label" for="flexRadioDefault1">주부</label>
+					</div>
+					<div class="form-check">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">학생</label>
+					</div>
+					<div class="form-check">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">직장인</label>
+					</div>
+					<div class="form-check">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">프리랜서</label>
+					</div>
+					<div class="form-check">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">구직자</label>
+					</div>
+					<div class="form-check">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">직접 입력</label>
+					</div>
+					<input class="sitter_others_input text-center" placeholder="이곳에 직접 입력해주세요">
+				</div><br><br>
+				
+				<hr />
+				<h4>2. 활동 정보</h4>
+				
+				<div class="day_wrap">
+					<div class="sitter_job">활동 가능한 일수(한 달 기준)</div>
+					
+					<div class="form-check2">
+  						<input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
+ 						 <label class="form-check-label" for="flexRadioDefault1">주말 포함한 30일 모두 가능합니다.</label>
+					</div>
+					<div class="form-check2">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">평균 20일 이상 가능합니다.</label>
+					</div>
+					<div class="form-check2">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">평균 20일 이하 가능합니다.</label>
+					</div>
+					<div class="form-check2">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">
+ 						  주말만 가능합니다.<br>
+ 						  <span class="sitter_weekends">(방문 펫시터로 활동이 어려울 수 있습니다.)</span>
+ 						 </label>
+					</div>
+
+				</div>
+				<br>
+				
+				<div class="job_wrap">
+					<div class="sitter_job">활동 가능한 시간대</div>
+					
+					<div class="form-check3">
+  						<input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault1">
+ 						 <label class="form-check-label" for="flexRadioDefault1">모두 가능합니다.</label>
+					</div>
+					<div class="form-check3">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">오전타임(오전8:00~오후12:00)</label>
+					</div>
+					<div class="form-check3">
+ 						 <input class="form-check-input" type="radio" name="flexRadioDefault3" id="flexRadioDefault2" checked>
+ 						 <label class="form-check-label" for="flexRadioDefault2">오후타임(오후12:00~오후06:00)</label>
+					</div>
+				</div>
+				
+				<div class="care_wrap">
+					<div class="sit_care_exp">[선택]타인의 반려동물을 돌봐준 경험</div>
+					<div class="care_input_box">
+					<input class="care_input text-center" name="sit_care_exp" placeholder="그 외 반려동물 관련 경력 또는 경험에 대해서 알려주세요">
+				</div> 
+					<span>04년생부터(만 18세 이상) 지원이 가능합니다.</span>
+				</div><br>
+
+				
+				<div class="intro_wrap">
+					<div class="user_intro">자기소개</div>
+					<div class="intro_input_box">
+					<input class="intro_input text-center" name="sit_intro">
+				</div>
+					<span>입력한 휴대폰 번호로 합격 여부를 알려드립니다.</span>
+				</div><br>
+				
+				
+				
+				
+			</div>
+			
+			<button type="submit" class="btn btn-primary btn-lg btn-block">보내기</button>
+			
+			</form>		
 		</div>
 	<%@include file="/includes/footer.jsp" %>
 

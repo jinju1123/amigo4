@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	UserDAO userDAO;
-
+	
 	@Override
 	public UserVO getUser(String email) {
 		return userDAO.getUser(email);
@@ -31,8 +31,13 @@ public class UserServiceImpl implements UserService{
 		// mail server 설정
 		String charSet = "utf-8";
 		String hostSMTP = "smtp.naver.com";
+<<<<<<< HEAD
 		String hostSMTPid = "amigo931224";
 		String hostSMTPpwd = "tjdgud!2";
+=======
+		String hostSMTPid = "jinjoo__@naver.com";
+		String hostSMTPpwd = "";
+>>>>>>> d00db7b0d56fae41c6fdc7270b5c9531e69d26ec
 	
 		// 보내는 사람 Email, 제목, 내용
 		String fromEmail = "amigo931224@naver.com";

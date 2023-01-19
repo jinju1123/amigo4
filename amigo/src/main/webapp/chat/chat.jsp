@@ -106,7 +106,7 @@
 	</div>
 	<script>
 //채팅 서버 주소
-  var url = "ws://192.168.0.101/:8088/amigo/chatHandler.do";
+  var url = "ws://localhost:8088/amigo/chatHandler.do";
   let index = "<%=index%>";
   // 웹 소켓
   var ws;
