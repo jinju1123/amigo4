@@ -1,15 +1,43 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,100);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 body {
   font-family: "Roboto", sans-serif;
-  padding-top: 150px;
+
+  /* 글씨체
+  text-decoration: none;
+  color: black;
+  font-family: "Jalnan";
+  font-size: 90%; */
 }
 * {
   margin: 0;
   padding: 0;
 }
+/* 네브바 위치때문에 가려지는것을 막아줌 */
+#AmigoTop {
+  padding-top: 120px;
+}
+
+#myPageTop {
+  padding-top: 120px;
+}
+
+#communityTop {
+  padding-top: 120px;
+}
+
+#csHeader {
+  padding-top: 120px;
+}
+/* 종료 */
+
 i {
   margin-right: 10px;
+}
+#navTop {
+  padding-top: 150px;
 }
 /*----------bootstrap-navbar-css------------*/
 .navbar-logo {
@@ -111,29 +139,7 @@ i {
   left: -25px;
 }
 
-@media (min-width: 992px) {
-  .navbar-expand-custom {
-    -ms-flex-flow: row nowrap;
-    flex-flow: row nowrap;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-  }
-  .navbar-expand-custom .navbar-nav {
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-  .navbar-expand-custom .navbar-toggler {
-    display: none;
-  }
-  .navbar-expand-custom .navbar-collapse {
-    display: -ms-flexbox !important;
-    display: flex !important;
-    -ms-flex-preferred-size: auto;
-    flex-basis: auto;
-  }
-}
-
-@media (max-width: 991px) {
+@media (max-width: 720px) {
   #navbarSupportedContent ul li a {
     padding: 12px 30px;
   }
@@ -168,5 +174,31 @@ i {
   .btn:focus {
     outline: none !important;
     box-shadow: none !important;
+  }
+
+  /*  
+   Main css
+*/
+
+  /*
+글씨체
+*/
+  /* .mypage_link {
+    text-decoration: none;
+    color: black;
+    font-family: "Jalnan";
+    font-size: 100%;
+  }
+  h3 {
+    font-family: "Jalnan", sans-serif;
+    font-size: 150%;
+  } */
+  /* 버튼 */
+  .divider:after,
+  .divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
   }
 }

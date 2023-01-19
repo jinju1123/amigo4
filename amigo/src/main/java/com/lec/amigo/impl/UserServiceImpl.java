@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	UserDAO userDAO;
-
+	
 	@Override
 	public UserVO getUser(String email) {
 		return userDAO.getUser(email);
